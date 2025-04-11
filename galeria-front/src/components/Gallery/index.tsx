@@ -1,4 +1,5 @@
 import { GalleryItem } from "../GalleryItem";
+import { ImageModal } from "../ImageModal";
 
 const imageMocks = [
   {
@@ -40,22 +41,26 @@ const imageMocks = [
 
 export function Gallery() {
   return (
-    <div
-      className="grid gap-4 
-        auto-rows-[150px]
-        grid-cols-4
-        xl:grid-cols-6
-        px-4 py-6"
-    >
-      {imageMocks.map((image, index) => (
-        <GalleryItem 
-          key={image._id}
-          src={image.url}
-          alt={image.filename}
-          layoutClass={getGridClass(index)}
-        />
-      ))}
-    </div>
+    <>
+      <div
+        className="grid gap-4 
+          auto-rows-[150px]
+          grid-cols-4
+          xl:grid-cols-6
+          px-4 py-6"
+      >
+        {imageMocks.map((image, index) => (
+          <GalleryItem 
+            key={image._id}
+            src={image.url}
+            alt={image.filename}
+            layoutClass={getGridClass(index)}
+          />
+        ))}
+      </div>
+
+      <ImageModal image={imageMocks[2].url} title={imageMocks[2].filename} />
+    </>
   )
 }
 
